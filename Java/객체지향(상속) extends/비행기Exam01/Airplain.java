@@ -1,0 +1,19 @@
+public class Airplain {
+	
+	// 아래의 생성자는 생략가능
+	public Airplain () {
+		
+	}
+	
+	public void land () {
+		System.out.println("착륙합니다.");	
+	}
+	
+	public void fly () {
+		System.out.println("일반비행입니다.");	
+	}
+	
+	public void takOff () {
+		System.out.println ("이륙합니다.");	
+	}
+}
