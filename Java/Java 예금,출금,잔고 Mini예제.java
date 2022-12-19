@@ -28,8 +28,7 @@ public static void main(String[] args) {
 			case 4:
 				run = false;
 				System.out.println ("프로그램을 종료합니다.");
-			}
-			
+			}	
 	}
 	scanner.close();
 }
