@@ -43,4 +43,3 @@ System.out.println (human6);	// 3.14159
 // boolean Type
 boolean human7 = 10<11;
 System.out.println(human7);     // treu
-
