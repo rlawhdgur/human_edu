@@ -21,7 +21,7 @@
     - 사용툴 : Visual Studio Code    
     -
 
-- Database
+- SPL
     - 사용툴 : Oracle
     -
 
