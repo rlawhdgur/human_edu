@@ -28,4 +28,43 @@
 - 클래스의 구성멤버는 멤버변수(필드), 생성자, 메소드로 구성됨.
 - 각 구성멤버는 객체를 구체화하는데 사용함.
 
-### 필드
+![image](https://user-images.githubusercontent.com/120995529/208586331-6e78eeea-aa5f-4c9a-8fae-37452131b8e2.png)
+
+## 필드 
+- 객체의 고유데이터를 의미함.
+- 객체가 가져야 할 제약사항.
+- 객체의 현재상태의 데이터.
+
+## 생성자
+- 생성자는 객체를 생성하는 것으로 초기값을 생성.
+- 클래스명과 동일한 함수가 바로 생성자임.
+
+### 생성자 오버로딩
+
+![image](https://user-images.githubusercontent.com/120995529/208596548-ad122136-6896-4ef4-8ff3-06ce1af2f233.png)
+
+## 메소드
+- 메소드는 객체의 동작(기능)을 정의함.
+- 메서드는 객체의 호출에 의해 동작하며, 일부는 return값을 회신하여 객체의 요구에 부응함.
+
+![image](https://user-images.githubusercontent.com/120995529/208597355-77d1f663-ed7d-4b89-8f9a-2e4ddf9eb091.png)
+
+### 메소드 오버로딩
+- 클래스내 같은 이름의 메소드를 여러개 선언하는 것을 메소드 오버로딩이라고 함.
+- 인자의 개수 및 인자의 타입의 따라 여러개 선언 가능.
+
+![image](https://user-images.githubusercontent.com/120995529/208597061-3534bd99-675e-44c3-a487-53361744259b.png)
+
+
+# final 필드 및 상수(static final)
+- final은 최종의 의미를 지니는 것으로 항번 정의되면 변경이 불가한 필드를 의미함.
+- static final은 불변의 의미를 지니는 상수를 의미함.
+
+![image](https://user-images.githubusercontent.com/120995529/208599262-f439c020-0867-4a89-95b4-fdcc6366fc1c.png)
+
+# 접근제한자
+- public, protected, default, private
+
+
+
+
