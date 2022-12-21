@@ -11,7 +11,7 @@
 
 
 - Front_End - HTML/CSS, JAVA Script, JQuqery
-    - 사용툴 : <img src="https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?style=flat-square&logo=Visual%20Studio%20Code&logoColor=white"/>
+    - 사용툴 : <img src="https://img.shields.io/badge/Visual%20Studio%20Code-ver%20%3A%201.74.1-007ACC?style=flat-square&logo=Visual%20Studio%20Code&logoColor=white"/>
     - HTML : ```<a></a>```, ```<input>```, ```<button></button>```, ```<select></select>```등의 태그 실습
     - CSS : ```CSS``` 태그 실습
     - JAVA Script : 이벤트를 이용한 태그 설정 변환 및 데이터 관리 실습
