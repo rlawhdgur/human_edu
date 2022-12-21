@@ -5,15 +5,13 @@
 
 ## 수업내용
 - JAVA
-    - 사용툴 : <img src="https://img.shields.io/badge/EclipseSE-2C2255?style=flat-badge&logo=Eclipse%20IDE&logoColor=white">
-    <img src="https://img.shields.io/badge/-JDK%20ver%20%3A%2017.0.4.1-auto"/>
+    - 사용툴 : <img src="https://img.shields.io/badge/EclipseSE-2C2255?style=flat-badge&logo=Eclipse%20IDE&logoColor=white">, <img src="https://img.shields.io/badge/-JDK%20ver%20%3A%2017.0.4.1-auto"/>
     - 자바를 코딩하기 위한 기본 개념, 객체, 상속, 인터페이스, 예외처리 등 실습
     - 객체(추상클래스, 인터페이스)를 이용한 데이터 처리 실습
 
 
 - Front_End - HTML/CSS, JAVA Script, JQuqery
-    - 사용툴 : <img src="https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?style=flat-badge&logo=Visual%20Studio%20Code&logoColor=white"/>
-    <img src="https://img.shields.io/badge/-ver%20%3A%201.74.1-auto"/>
+    - 사용툴 : <img src="https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?style=flat-badge&logo=Visual%20Studio%20Code&logoColor=white"/>, <img src="https://img.shields.io/badge/-ver%20%3A%201.74.1-auto"/>
     - HTML : ```<a></a>```, ```<input>```, ```<button></button>```, ```<select></select>```등의 태그 실습
     - CSS : ```CSS``` 태그 실습
     - JAVA Script : 이벤트를 이용한 태그 설정 변환 및 데이터 관리 실습
@@ -21,8 +19,7 @@
 
 
 - SQL
-    - 사용툴 : <img src="https://img.shields.io/badge/Oracle-F80000?style=flat-badge&logo=Oracle&logoColor=white">
-    <img src="https://img.shields.io/badge/-%20ver%20%3A%2011g%20Enterprise%20Edition%20Release%2011.2.0.1.0-auto"/>
+    - 사용툴 : <img src="https://img.shields.io/badge/Oracle-F80000?style=flat-badge&logo=Oracle&logoColor=white">, <img src="https://img.shields.io/badge/-%20ver%20%3A%2011g%20Enterprise%20Edition%20Release%2011.2.0.1.0-auto"/>
 
     - ```DML```, ```DCL```을 이용한 ```CRUD``` 실습
     - ```join```, ```subQuery```를 이용한 데이터 추출 실습
@@ -30,8 +27,7 @@
 
 
 - Spring Boot
-    - 사용툴 : <img src="https://img.shields.io/badge/EclipseEE-2C2255?style=flat-badge&logo=Eclipse%20IDE&logoColor=white">
-    <img src="https://img.shields.io/badge/-ver%20%3A%202022--09(4.25.0)%20%2F%20JDK%20ver%20%3A%2017.0.4.1-auto"/>
+    - 사용툴 : <img src="https://img.shields.io/badge/EclipseEE-2C2255?style=flat-badge&logo=Eclipse%20IDE&logoColor=white">, <img src="https://img.shields.io/badge/-ver%20%3A%202022--09(4.25.0)%20%2F%20JDK%20ver%20%3A%2017.0.4.1-auto"/>
     - ```MVC``` 구조학습
     - 회원가입 및 로그인 실습
     - ```Oracle DB```와 연동 및 데이터 ```CRUD```실습
