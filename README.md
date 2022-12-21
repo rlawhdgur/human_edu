@@ -11,7 +11,7 @@
 
 - JAVA Script
     - 사용툴 : Visual Studio Code
-              <img src="https://img.shields.io/badge/Visual%20Studio%20Code-%3A)-blue">
+              <img src="https://img.shields.io/badge/Visual Studio Code-007396?style=flat-square&logo=#2C2255&logoColor=white"/>
     -
 
 - JQuery
