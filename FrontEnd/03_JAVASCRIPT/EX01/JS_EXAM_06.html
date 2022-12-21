@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Object 객체 </title>
+    <script>
+        let exam1 = new Object();
+        exam1.kor = 90;
+        exam1.eng = 80;
+        exam1.math = 70;
+
+        console.log(exam1.kor + exam1.eng);
+        console.log(exam1["kor"] + exam1.eng);
+        // exam1.kor 이나 exam1["kor"] 같은 내용이다.
+
+        // key를 이용한 데이터 관리.
+        let key = "math";
+        console.log(exam1[key]);
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

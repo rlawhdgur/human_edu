@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> TEST 06 </title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            border-bottom: 1px solid gray;
+            padding-left: 20px;
+        }
+        footer {
+            border-top: 1px solid gray;
+            padding: 20px;
+        }
+        .content {
+            display: flex;
+
+        }
+        .content nav {
+            border-right: 1px solid gray;
+        }
+        .content aside {
+            border-left: 1px solid gray;
+        }
+        nav {
+            flex-basis: 200px;
+            flex-shrink: 0;
+        }
+        main {
+            padding: 20px;
+        }
+        aside {
+            flex-basis: 100px;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+    <dvi class = "container">
+        <header> 
+            <h1> 휴먼교육센터 </h1>
+        </header>
+        <section class = "content">
+            <nav>
+                <ul>
+                    <li>영등포</li>
+                    <li>수원</li>
+                    <li>천안</li>
+                </ul>
+            </nav>
+            <main>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum at vel officiis nemo, debitis deserunt ratione ipsa facere rerum eligendi corrupti nulla mollitia, delectus veritatis? Modi dolorum sit similique provident.
+            </main>
+            <aside>
+                광고
+            </aside>
+
+        </section>
+        <footer>
+            김종혁
+        </footer>
+    </dvi>
+    
+</body>
+</html>
