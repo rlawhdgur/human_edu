@@ -5,13 +5,13 @@
 
 ## 수업내용
 - JAVA
-    - 사용툴 : <img src="https://img.shields.io/badge/EclipseSE-007396?style=for-the-badge&logo=#2C2255&logoColor=white">
+    - 사용툴 : <img src="https://img.shields.io/badge/EclipseSE-007396?style=for-the-badge&logo=Eclipse%20IDE&logoColor=white">
     - 
 
 
 - JAVA Script
     - 사용툴 : Visual Studio Code
-              <img src="https://img.shields.io/badge/Visual Studio Code-007396?style=flat-square&logo=#007ACC&logoColor=white"/>
+              <img src="https://img.shields.io/badge/Visual%20Studio%20Code-007396?style=flat-square&logo=Visual%20Studio%20Code&logoColor=white"/>
     -
 
 - JQuery
