@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>호텔관리 시스템</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+</head>
+<style>
+    #dvHotel {
+        width: 760px; height: 700px; margin: auto;
+    }
+    #hotel0 {
+        width: 700px; height: 620px; background-color: gray; 
+    }
+    #hotel1 {
+        width: 700px; height: 620px; background-color: yellow; 
+    }
+    #hotel2 {
+        width: 700px; height: 620px; background-color: aqua; 
+    }
+</style>
+<body align="center">
+    <h1>호텔관리 시스템</h1>
+    <div id = "dvHotel" align="center">
+        <ul>
+            <li><a href='#hotel0'>객실종류관리</a></li>
+            <li><a href='#hotel1'>객실관리</a></li>
+            <li><a href='#hotel2'>예약관리</a></li>
+        </ul>
+        <div id="hotel0">
+            <table>
+                <tr>
+                    <td>
+                        <select id="selType" size="12" style = "width:300px; height:600px;">
+                            <!-- <option value="No1">SuiteRoom</option>
+                            <option value="No2">FamilyRoom</option>
+                            <option value="No3">SingleRoom</option>
+                            <option value="No4">DeluxeRoom</option> -->
+                        </select>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>객실종류번호<input id="typeNum" type="text" style = "width: 130px;"></td>
+                            </tr>
+                            <tr>
+                                <td>객실종류명<input id="typeName" type="text" style = "width:130px;"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button id="btnTypeAdd">등록</button>
+                                    <button id="btnTypeDel">삭제</button>
+                                <td>
+                            </tr>
+                        </table>
+                    </td>    
+                </tr>    
+            </table>
+        </div>
+        <div id="hotel1">
+            <table>
+                <tr>
+                    <td>
+                        <select id="selList" size="12" style = "width:300px; height:600px;">
+                            <!-- <option value=""></option> -->
+                        </select>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>객실번호<input id="roomNum" type="text" style = "width: 130px;"></td>
+                            </tr>
+                            <tr>
+                                <td>객실종류명<select id="roomType" style = "width:130px;"></select></td>
+                            </tr>
+                            <tr>
+                                <td>객실명<input id="roomName" type="text" style = "width: 130px;"></td>
+                            </tr>
+                            <tr>
+                                <td>숙박가능인원<input id="howmany" type="text" style = "width: 130px;">명</td>
+                            </tr>
+                            <tr>
+                                <td>1박요금<input id="howmuch" type="text" style = "width: 130px;">원</td>
+                            </tr>
+                            <tr>
+                                <td>비고<input id="" type="text" style = "width:200px; height:300px;"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button id="btnRoomAdd">등록</button>
+                                    <button id="btnRoomDel">삭제</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+        <div id="hotel2">
+            <table align="center">
+                <tr>
+                    <td valign = "top">
+                        <table>
+                            <tr><td align="center"><예약가능목록></td></tr>
+                            <tr>
+                                <td align="center">숙박기간 <input id="day_S" type="date" style="width:110px;"> ~ <input id="day_E" type="date" style="width:110px;"></td>
+                            </tr>
+                            <tr>
+                                <td align="center">숙박인원 <input id="person" type="text" style="width:70px;">명 <button id="btnSearch">검색</button></td>
+                            </tr>
+                            <tr><td><객실목록></td></tr>
+                            <tr>
+                                <td>
+                                    <select id="searchList" size="12" style = "width:200px; height:450px;"></select>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td valign = "top">
+                        <table align="center">
+                            <tr><td align="center"><세부내역></td></tr>
+                            <tr>
+                                <td align="center">객실번호 <input id="reserveNum" type="text" style="width:70px;" readonly></td>
+                            </tr>
+                            <tr>
+                                <td align="center">객실종류 <input id="reserveType" type="text" style="width:70px;" readonly></td>
+                            </tr>
+                            <tr>
+                                <td align="center">객실명 <input id="reserveName" type="text" style="width:70px;" readonly></td>
+                            </tr>
+                            <tr>
+                                <td align="center">숙박예정인원 <input id="reserveHowmany" type="text" style="width:70px;"></td>
+                            </tr>
+                            <tr>
+                                <td align="center">숙박기간 <input id="reserveS" type="date" style="width:110px;"> ~ <input id="reserveE" type="date" style="width:110px;"></td>
+                            </tr>
+                            <tr>
+                                <td align="center">총비용 <input id="reserveHowmuch" type="text" style="width:100px;">원</td>
+                            </tr>
+                            <tr>
+                                <td align="center">예약자명 <input id="reserveSign" type="text" style="width:70px;"></td>
+                            </tr>
+                            <tr>
+                                <td align="center">모바일번호 <input id="reserveMobile" type="text" style="width:100px;"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button id="btnReserveSet">예약등록</button>
+                                    <button id="btnEmpty">비우기</button>
+                                    <button id="btnCancel">예약취소</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td valign = "top">
+                        <table>
+                            <tr><td align="center"><예약완료목록></td></tr>
+                            <tr><td><예약객실목록></td></tr>
+                            <tr>
+                                <td>
+                                    <select size="12" style = "width:200px; height:500px;">
+
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+<script>
+    let roomtype={};
+    let roomInfo={};
+    let arRoom=[];
+    $(document)
+    .ready(function(){
+        $('#dvHotel').tabs();
+    })
+    .on('click', '#btnTypeAdd', function(){
+        let txtTypeNum = $('#typeNum').val();
+        let txtTypeName = $('#typeName').val();
+        // $('#selType').append("<option value=" + txtTypeNum + ">" + " " + txtTypeName + "</option>");
+        // console.log(selType)
+        let str = '<option value="' + txtTypeNum +'">' + txtTypeName + '</option>';
+        console.log(str);
+        $('#selType').append(str);
+        $('#roomType').append(str);
+        $('#typeNum').val("");
+        $('#typeName').val("");
+        
+        roomtype[txtTypeNum]=txtTypeName;
+        console.log(roomtype);
+
+        // let str1 = $('#typeNum').val();
+        // let found = false;
+        // $('#selType option').each(function(){
+        //     if($(this).val() == str1) {
+        //         found = true;
+        //         return false;
+        //     }    
+        // })
+        // if(found) {
+        //     //update
+        //     $('#selType option[value=' + str1 + ']').text($('#typeName').val());
+        // }    
+        // else {
+        //     // add
+        //     $('#selType').append('<option value="' + txtTypeNum +'">' +txtTypeName + '</option>');
+
+        // }
+    })
+    .on('click', '#selType option', function(){
+        let str = $(this).val();
+        let selT = $('#selType option:selected').text();
+        $('#typeNum').val(str);
+        $('#typeName').val(selT);
+    })
+    .on('click', '#btnTypeDel', function(){
+        if(confirm('삭제하시겠습니까?')) {
+            $('#typeNum').val("");
+            $('#typeName').val("");
+            $('#selType option:selected').remove();
+            $('#roomType').empty();
+            $('#selType option').each(function(){
+            let selTypeV = $(this).val();
+            let selTypeT = $(this).text();
+            $('#roomType').append('<option value=' + selTypeV + '>' + selTypeT + '</option>');
+            })
+        }
+        else {
+
+        }
+        // console.log(roomtype);
+    })
+    .on('click', '#btnRoomAdd', function(){               
+        let txtRoomNum = $('#roomNum').val();
+        let txtRoomType = $('#roomType option:selected').text();
+        let txtRoomName = $('#roomName').val();
+        let txtMany = $('#howmany').val();
+        let txtHowmuch = $('#howmuch').val();
+
+        flag = false;
+            for(i=0; i<arRoom.length; i++) {
+                roomInfo = arRoom[i];
+                if(roomInfo['num'] == $('#roomNum').val()) {
+                    arRoom[i]['type'] == $('#roomType').val();
+                    arRoom[i]['name'] == $('#roomName').val();
+                    arRoom[i]['howmany'] == $('#howmany').val();
+                    arRoom[i]['homuch'] == $('#howmuch').val();
+                    flag = true;
+                    break;
+            }
+        }
+        if(flag==false) {
+            roomInfo={};
+            roomInfo['num'] = $('#roomNum').val();
+            roomInfo['type'] = $('#roomType option:selected').val();
+            roomInfo['name'] = $('#roomName').val();
+            roomInfo['howmany'] = parseInt($('#howmany').val());
+            roomInfo['howmuch'] = parseInt($('#howmuch').val());
+            arRoom.push(roomInfo);
+        }
+        // $('#searchList').append("<option>" + txtTypeNum + " " + txtTypeName + "</option>");
+        // console.log(roomInfo)
+        // console.log(roomInfo[0])
+        console.log(arRoom)
+
+        $('#selList').append("<option>" + txtRoomNum + " " +txtRoomType + " " + txtRoomName + " " + txtMany + "명 " + txtHowmuch + "원" + "</option");
+        // let a = 'option value=' + txtRoomNum + ", " + txtRoomType + ", " + txtRoomName + ", " + txtMany + "명 " + txtHowmuch + "원" + '</option';
+        // $('#selList').append(a);    
+            $('#roomNum').val("");
+            $('#roomName').val("");
+            $('#howmany').val("");
+            $('#howmuch').val("");
+            
+        // flag = false;
+        //     for(i=0; i<arRoom.length; i++) {
+        //         roomInfo = arRoom[i];
+        //         if(roomInfo['num'] == $('#roomNum').val()) {
+        //             arRoom[i]['type'] == $('#roomType').val();
+        //             arRoom[i]['name'] == $('#roomName').val();
+        //             arRoom[i]['howmany'] == $('#howmany').val();
+        //             arRoom[i]['homuch'] == $('#howmuch').val();
+        //             flag = true;
+        //             break;
+        //     }
+        // }
+        // // 두가지 경우 : 1. [true] : update완료 후 breark;
+        // //              2. [false] : 같은 객실번호가 없어서 추가해야 하는 경우.
+        // if(flag==false) {
+        //     roomInfo={};
+        //     roomInfo['num']=$('#roomNum').val();
+        //     roomInfo['type']=$('roomtype').val();
+        //     roomInfo['name']=$('roomName').val();
+        //     roomInfo['howmany']=parseInt($('#howmany').val());
+        //     roomInfo['howmuch']=parseInt($('#howmuch').val());
+        //     arRoom.push(roomInfo);
+        // }                              
+    })
+    .on('click', '#selList option', function(){
+        let str = $(this).text();
+        let arSelList = str.split(' ');
+        $('#roomNum').val(arSelList[0]);
+        $('#roomType').val(arSelList[1]);
+        $('#roomName').val(arSelList[2]);
+        $('#howmany').val(arSelList[3]);
+        $('#howmuch').val(arSelList[4]);
+        console.log(arSelList)
+        
+        // console.log(str);
+        // console.log(roomL);
+        // $('#roomNum').val(roomL);
+    })
+    .on('click', '#btnRoomDel', function(){
+        if(confirm('삭제하시겠습니까?')) {
+            $('#roomNum').val("");
+            $('#roomType').val("");
+            $('#howmany').val("");
+            $('#howmuch').val("");
+            $('#selList option:selected').remove();
+        }
+    })
+    // .on('click', '#btnRoomAdd', function(){
+    //     roomInfo={};
+    //     roomInfo['num'] = $('#roomNum').val();
+    //     roomInfo['type'] = $('#roomType option:selected').val();
+    //     roomInfo['name'] = $('#roomName').val();
+    //     roomInfo['howmany'] = parseInt($('#howmany').val());
+    //     roomInfo['howmuch'] = parseInt($('#howmuch').val());
+    //     arRoom.push(roomInfo);
+    //     // console.log(roomInfo)
+    //     // console.log(roomInfo[0])
+    //     console.log(arRoom)
+    // })
+    .on('click', '#btnSearch', function(){
+        let n;
+        n = parseInt($('#person').val());
+        for(i=0; i<arRoom.length; i++) {
+            roomInfo = arRoom[i];
+            if(roomInfo['howmany']>=n) {
+                let str = '<option value=' + roomInfo['num'] + ', ' + roomInfo['type'] + ', ' + roomInfo['name']
+                            + ', ' + roomInfo['howmany'] + ', ' + roomInfo['howmuch'] +'>' + '</option>';
+                $('#searchList').append(str);                
+            }
+        }
+    })
+    // .on('click', '#searchList', function(){
+    //     $('#btnEmpty').trigger('click');
+    //     let num = $(this).val();    // roomNum
+    //     for(i=0; i<arRoom.length; i++) {
+    //         roomInfo = arRoom[i];
+    //         if(roominfo['num'] == num) {
+    //             // 세부내역 채우기.
+    //             break;
+    //         }
+    //     }
+    // })
+    // .on('click', '#btnEmpty', function(){
+    //     // empty
+    // })
+</script>
+</html>
+
+
+
+
+
+
+
+// .on('click', '#selRoom', function(){
+    //     $
+    // })
+    // .on('click', '#btnAdd', )
+    // roomtype={};
+    // roomtype[객실종류번호] = 객실종류명;
+    // <option value = 객실종류번호>객실종류명</option>
+    
+    // for (key in roomtype) {
+    //     str = '<option value="' + key +'">' + roomtype[key] + '</option>';
+    //     $('#rtype').append(str);
+    // }
+$('#rtype').empty();
+
+// .on('click', '#selRoom', function(){ // $ // }) 
+// .on('click', '#btnAdd', ) 
+// roomtype={}; 
+// roomtype[객실종류번호] = 객실종류명; 
+//객실종류명
+// for (key in roomtype) { 
+    // str = "" + roomtype[key] + "";
+    // $('#rtype').append(str); 
+    // }
+     $('#rtype').empty();
+

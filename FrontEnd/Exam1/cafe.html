@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 카페관리 웹페이지 작성 </title>
+    <script src = "https://code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+<body>
+    <table align="center">
+        <tr>
+            <td valign = "top">
+                <table>
+                    <tr><td align="center">메뉴목록</td></tr>
+                    <tr>
+                        <td align="center">
+                            <select id="selMenu" type = "text" size = 12 style = "width: 200px; height:300px;">
+                                <option value="Americano">Americano 2500</option>
+                                <option value="Espresso">Espresso 2000</option>
+                                <option value="Latte">Latte 3000</option>
+                                <option value="Cappuccno">Cappuccno 3500</option>
+                                <option value="Mocca">Mocca 3500</option>
+                                <option value="Green Tea">GreenTea 3000</option>
+                                <option value="Vanilla Latte">VanillaLatte 4000</option>
+                                <option value="Coke">Coke 2000</option>
+                                <option value="Juice">Juice 3700</option>
+                                <option value="Ade">Ade 3500</option>
+                            </select>                         
+                        </td>
+                    </tr>
+                    <tr align="center">
+                        <td>메뉴명 <input id="txtMenu" type = "text" readonly style = "width: 130px;"></td>
+                    </tr>
+                    <tr>
+                        <td align="center">수량 <input id="txtQty" type = "number" min="1" max="99">잔</td>
+                    </tr>
+                    <tr>
+                        <td align="center">가격 <input id="txtPrice1" type = "text" readonly style = "width: 130px;">원</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button id="btnAdd" style = "width:110px; height:50px; font-size: 20px;">추가</botton>
+                            <button id="btnDel" style = "width:110px; height:50px; font-size: 20px;">지우기</button>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td valign = "top">
+                <table>
+                    <tr><td align="center">주문내역</td></tr>
+                    <tr>
+                        <td align="center">
+                            <select id="selOrder" type = "text" size = 12 style = "width: 200px; height:300px;"></select>
+                        </td>
+                    </tr>
+                    <tr align="center">
+                        <td>총액 <input id="txtPrice2" type = "text" readonly style = "width: 130px;">원</td>
+                    </tr>
+                    <tr align="center">
+                        <td>모바일번호 <input id="txtMobile" type = "text" style = "width: 130px;"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button id="btnOrderDel" style = "width:110px; height:50px; font-size: 20px;">주문삭제</button>
+                            <button id="btnOrderGet" style = "width:110px; height:50px; font-size: 20px;">주문완료</button>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td valign = "top">
+                <table>
+                    <tr><td align="center">매출내역</td></tr>
+                    <tr>
+                        <td align="center">
+                            <select id="selSales" type = "text" size = 12 style = "width: 200px; height:300px;"></select>
+                        </td>
+                    </tr>
+                    <tr align="center">
+                        <td>매출총액 <input id="txtPrice3" type = "text" readonly style = "width: 110px;">원</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+</body>
+<script>
+    let a;
+    $(document)
+    .on('click', '#selMenu', function(){
+        let str = $('#selMenu option:selected').text();
+        // console.log(str);
+        let txtM = str.split(' ');
+
+        $('#txtMenu').val(txtM[0]);
+        $('#txtQty').val(1);
+        $('#txtPrice1').val(txtM[1]);
+        a =parseInt(txtM[1]);
+    })
+    .on('change', '#txtQty', function(){
+        $('#txtPrice1').val(a*parseInt($('#txtQty').val()));
+    })
+    .on('click', '#btnAdd', function(){
+        let txtM = $('#txtMenu').val();
+        let txtQ = $('#txtQty').val();
+        let txtP1 = $('#txtPrice1').val();
+        $('#selOrder').append("<option>" + txtM + " " + txtQ + "개 " + txtP1 + "원" + "</option>");
+        $('#txtMenu').val("");
+        $('#txtQty').val("");
+        $('#txtPrice1').val("");
+
+        let sum = 0;
+        $('#selOrder option').each(function(){
+            let selO = $(this).text();
+            let oderAr = selO.split(' ');       // ['Americano', '1잔', '2500']
+            sum = sum + parseInt(oderAr[2]);
+            $('#txtPrice2').val(sum);
+        })
+    })
+    .on('click', '#btnDel', function(){
+        $('#txtMenu').val("");
+        $('#txtQty').val("");
+        $('#txtPrice1').val("");
+    })
+    .on('click', '#btnOrderDel', function(){
+        // $('#selOrder option:selected').remove();
+        // let sum = 0;
+
+        
+        let sum = 0;
+        $('#txtPrice2').val(null);
+        $('#selOrder option:selected').remove();
+        $('#selOrder option').each(function(){
+            let selO = $(this).text();
+            let orderAr = selO.split(' ');
+            sum = sum + parseInt(orderAr[2]);
+            $('#txtPrice2').val(sum);
+        })
+    })
+    .on('click', '#btnOrderGet', function(){
+        let sum = 0;
+        $('#selOrder option').each(function(){
+            let str = $(this).text();
+            let txtMb = ('#txtMobile').val();
+            if(txtMb=='') {
+                $('#selSales').append("<option> 번호없음 " + str + "</option>");
+            }
+            else {
+                $('#selSales').append("<option>" + txtMb + " " + str + "</option>");
+            }
+        })
+        $('#selSales option').each(function(){
+            let str0 = $(this).text();
+            let salesAr = str0.split(' ');
+            sum = sum + parseInt(salesAr[2]);
+            $('#txtPrice3').val(sum);
+        })
+        $('#selOrder option').remove();
+        $('#txtPrice1').val('');
+        $('#txtMobile').val('');
+    })
+    // .on('click', '#btnOrderGet', function(){
+    //     let mobileNum = 
+    // })
+    
+
+</script>
+</html>
