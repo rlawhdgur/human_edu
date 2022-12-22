@@ -8,12 +8,12 @@
         System.out.println("HUMAN");
     }    
 
-
 	public static void main(String[] args) {
         int kor = 100;
         int eng = 90;
         int math = 95;
         System.out.print(kor + eng + math);     // 285
+    }
 
 // 변수 선언.
 	public static void main(String[] args) {
