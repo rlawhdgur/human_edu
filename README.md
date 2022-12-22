@@ -36,6 +36,9 @@
 - R
     - 사용툴 : <img src="https://img.shields.io/badge/RStudio-75AADB?style=flat-badge&logo=RStudio&logoColor=white">
     - ```R```의 강점, ```시각화```, ```자료형```, ```파일``` 불러오기 및 내보내기
+    - ```R```기초 문법, 데이터 가공, 데이터 시각화, 텍스트 마이닝, 지도 시각화
+    - 주요패키지 : ```dplyr```, ```ggplot2```, ```KoNLP```, ```googleVis```
+    - 참고 서적 : 처음 시작하는 R데이터 분석
 
 - Python
     - 사용툴 : <img src="https://img.shields.io/badge/Python-3776AB?style=flat-badge&logo=Python&logoColor=white">
