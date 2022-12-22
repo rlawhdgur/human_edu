@@ -1,0 +1,75 @@
+<%-- <%@page import="ch.qos.logback.core.recovery.ResilientSyslogOutputStream"%> --%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>My Home</title>
+</head>
+<body>
+<h1>HYUK</h1>
+<div id=dvHead style='width:100%'></div>
+<br><br>
+<table id=tblList border=1>
+<tr>
+	<th>게시물번호</th>
+	<th>제목</th>
+	<th>작성자</th>
+	<th>작성일</th>
+	<th>수정일</th>
+</tr>
+<c:forEach var="post" items="${postList }">
+<tr>
+	<td>${post.post_id }</td>
+	<td>${post.title }</td>
+	<td>${post.writer }</td>
+	<td>${post.created }</td>
+	<td>${post.updated }</td>
+	<td>
+		<input type=button id=btnView value='보기'>
+	</td>
+	<c:if test>
+		<input type=button id=btnUpdate valeu='수정'>
+		<input type=button id=btnDelete value='삭제'>
+	</c:if>
+</tr>
+</c:forEach>
+</table>
+<br><br>
+</body>
+<script src='https://code.jquery.com/jquery-3.4.1.js'></script>
+<script>
+$(document)
+.ready(function(){
+	$.post('/loginCheck', {}, function(data){
+		if(data=='') {
+			str = "<a href='/login'+>로그인</a>&nbsp;&nbsp;<a href='/signIn'>회원가입</a>";
+		}
+		else {
+			str = "<lable>"+data+"</lable>&nbsp;&nbsp;<label id=lblSignOut>로그아웃</label><br><br>"
+		}
+		$('#dvHead').html(str);
+		if(data!='') {
+			$('body').append('<input type=button id=btnWrite value="글작성">&nbsp;&nbsp;');
+		}
+	}, 'text');
+})
+.on('click', '#btnWrite', function(){
+	document.location="/writeOn";
+	return false;
+})
+.on('click', '#lblSignOut', function(){
+	$.post('/signOut', {}, function(data){
+		if(data=='ok') {
+			alert("로그아웃 되었습니다.");
+			document.location ="/";
+		}
+		else {
+			alert("로그아웃 실패.. 다시 시도하십시오.");
+		}
+	}, 'text');
+})
+</script>
+</html>

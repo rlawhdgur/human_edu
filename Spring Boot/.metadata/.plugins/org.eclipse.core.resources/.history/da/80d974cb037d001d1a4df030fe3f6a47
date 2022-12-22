@@ -1,0 +1,185 @@
+package com.human.springboot;
+
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
+@Controller
+public class MyController {
+	
+	@Autowired
+	private MemberDAO mdao;
+	@Autowired
+	private PostDAO pdao;
+	
+	@RequestMapping("/")
+	public String doHome(HttpServletRequest req, Model model) {
+		HttpSession session = req.getSession();
+		ArrayList<WriteDTO> wdto = pdao.listWrite();
+		model.addAttribute("postList", wdto);
+		model.addAttribute("lUserid", (String)session.getAttribute("lUserid"));
+
+		return "home";
+	}
+	
+	@RequestMapping("/signIn")
+	public String doSignIn() {
+		
+		return "signIn";
+	}
+	
+	@RequestMapping("/login")
+	public String doLogin() {
+		
+		return "login";
+	}
+	
+	@RequestMapping("/checkDup")
+	@ResponseBody
+	public String doCheckDup(HttpServletRequest req) {
+		int n = mdao.checkDup(req.getParameter("newId"));
+		
+		return Integer.valueOf(n).toString();
+	}
+	
+	@RequestMapping("/viewUser")
+	@ResponseBody
+	public String doViewUser(HttpServletRequest req) {
+		String retval = "";
+		try {
+			String newId = req.getParameter("newId");
+			String newPasscode = req.getParameter("newPasscode");
+			String name = req.getParameter("name");
+			String mobile = req.getParameter("mobile");
+			
+			mdao.insertMember(newId, newPasscode, name, mobile);
+			return "ok";
+		}
+		catch(Exception e) {
+			retval = "fail";
+		}
+		
+		// Mybatis insert call
+		
+		return retval;
+	}
+	
+	@RequestMapping("/checkUser")
+	@ResponseBody
+	public String doCheckUser(HttpServletRequest req) {
+		String retval="";
+		try {
+			String loginId = req.getParameter("userId");
+			String pw = req.getParameter("passcode");
+			int cnt = mdao.getMemberCount(loginId, pw);
+			
+			if(cnt == 1) {
+				HttpSession session = req.getSession(); 	// 초기화
+				session.setAttribute("lUserid", loginId);	// 값 설정.
+//				System.out.println(loginId);
+				retval = "ok";
+			}
+			else {
+				retval="fail";
+			}
+		}
+		catch(Exception e) {
+			retval="fail";
+		}
+		return retval;	
+	}
+	
+	@RequestMapping("/loginCheck")
+	@ResponseBody
+	public String doLoginCheck (HttpServletRequest req) {
+		String str = "";
+		HttpSession session = req.getSession();
+		String userid = (String) session.getAttribute("lUserid");
+//		System.out.println(userid);
+		if(userid==null || userid.equals("")) {
+			str = "";
+//			str = "<a href='/login'+>로그인</a>&nbsp;&nbsp;<a href='/signIn'>회원가입</a>";
+		}
+		else {
+			str = userid;
+//			str ="<lable>"+userid+"</lable>&nbsp;&nbsp;<label id=lblSignOut>로그아웃</label><br><br>"
+//					+ "<input type=button id=btnWrite value='글작성'>";
+		}
+		return str;
+	}
+	
+	@RequestMapping("/signOut")
+	@ResponseBody
+	public String doSignOut(HttpServletRequest req) {
+		String retval = "";
+		try {
+			HttpSession session = req.getSession();
+			session.invalidate();
+			retval="ok";
+		}
+		catch (Exception e) {
+			retval="fail";
+		}
+		return retval;
+	}
+	
+	@RequestMapping("/writeOn")
+	public String doWriteOn() {
+		
+		return "write";
+	}
+	
+	@RequestMapping("/insert")
+	public String doAddWrite(HttpServletRequest req) {
+		HttpSession session = req.getSession(); 
+		
+		String title = req.getParameter("title");
+		String content = req.getParameter("content");
+		String writer = (String) session.getAttribute("lUserid");
+		
+		pdao.addWrite(title, content, writer);
+	
+		return "redirect:/";
+  }
+	
+	@RequestMapping("/view")
+	public String doView(HttpServletRequest req, Model model) {
+		// pdao 메소드 호출
+		// model에 담아서
+		// view.jsp에 전달.
+		
+		int post_id  = Integer.parseInt(req.getParameter("post_id"));
+		
+		PostingDTO pdto = pdao.getWrite(post_id);
+		model.addAttribute("getWriter", pdto);
+		
+		return "view";
+	}
+	
+	@RequestMapping("/delete")
+	public String doGetDelete(HttpServletRequest req, Model model) {
+			int post_id = Integer.parseInt(req.getParameter("post_id"));
+			pdao.getDelete(post_id);
+		
+		
+		return "redirect:/";
+	}
+	
+	@RequestMapping("/update")
+	public String doGetUpdate(HttpServletRequest req) {
+		String title = req.getParameter("title");
+		String content = req.getParameter("content");
+		String updated = req.getParameter("updated");
+		
+		pdao.getUpdate(title, content, updated);
+		
+		return "redirect:/";
+	}
+}

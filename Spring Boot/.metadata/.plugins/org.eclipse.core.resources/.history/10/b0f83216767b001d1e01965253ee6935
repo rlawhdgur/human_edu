@@ -1,0 +1,5 @@
+package com.human.springboot;
+
+public interface MemberDAO {
+	void insertMember(String userid, String passcode, String name, String mobile);
+}

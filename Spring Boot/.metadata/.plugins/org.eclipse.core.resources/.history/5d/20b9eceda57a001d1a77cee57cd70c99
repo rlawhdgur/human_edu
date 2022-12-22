@@ -1,0 +1,44 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AJAX Room Type</title>
+</head>
+<body>
+<h1>AJAX Room Type..</h1>
+<table align=center>
+<tr>
+	<td valign=top>
+		<table border=1 id=tblList>
+		<tr>
+			<th>Type Number</th>
+			<th>Type Name</th>
+		</tr>
+		</table>
+	</td>
+	<td valign=top>
+		<input type=hidden name=optype id=optype value='insert'>
+		<table>
+		<tr>
+			<td>Type Number</td><td><input type=text name=typenum id=typenum readonly></td>
+		</tr>
+		<tr>
+			<td>Type Name</td><td><input type=text name=typename id=typename></td>
+		</tr>
+		<tr>
+			<td colspan=2 align=center>
+				<input type=button value='추가' id=btnAddNew>
+				<input type=button value='삭제' id=btnDelete>
+				<input type=button value='비우기' id=btnReset>
+			</td>
+		</tr>		
+		</table>
+	</td>
+	<td>
+	</td>
+</tr>	
+</table>
+</body>
+</html>

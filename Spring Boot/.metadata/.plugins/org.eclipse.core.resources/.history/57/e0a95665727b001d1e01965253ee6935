@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login Page</title>
+</head>
+<body>
+<h1>로그인을 하세요 !!</h1>
+<form>
+<table>
+	<tr>
+		<td>로그인</td><td><input type=text name=userId id=userId></td>
+	</tr>
+	<tr>
+		<td>비밀번호</td><td><input type=password name=passcode id=passcode></td>
+	</tr>
+</table>
+</form>
+</body>
+</html>

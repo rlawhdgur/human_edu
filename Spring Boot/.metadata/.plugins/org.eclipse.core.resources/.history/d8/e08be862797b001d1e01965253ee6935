@@ -1,0 +1,8 @@
+package com.human.springboot;
+
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface MemberDAO {
+	void insertMember(String userid, String passcode, String name, String mobile);
+}

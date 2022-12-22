@@ -1,0 +1,12 @@
+package com.human.springboot;
+
+public class WriteDTO {
+	
+	private String post_id;
+	private String title;
+	private String writer;
+	private String created;
+	private String updated;
+	
+
+}

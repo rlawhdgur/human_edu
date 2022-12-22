@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<selcet id="getMemberCount" resultType="int">
+	select count(*) cnt from memeber where loginid=#{param1} and passcode=#{param2}
+</selcet>

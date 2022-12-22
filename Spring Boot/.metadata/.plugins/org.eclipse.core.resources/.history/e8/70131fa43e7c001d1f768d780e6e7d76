@@ -1,0 +1,43 @@
+<%@page import="ch.qos.logback.core.recovery.ResilientSyslogOutputStream"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%> 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>My Home</title>
+</head>
+<body>
+<h1>HYUK</h1>
+<div id=dvHead style='width:100%'></div>
+<br><br>
+</body>
+<script src='https://code.jquery.com/jquery-3.4.1.js'></script>
+<script>
+$(document)
+.ready(function(){
+	$.post('/loginCheck', {}, function(data){
+		if(data=='') {
+			str = "<a href='/login'+>로그인</a>&nbsp;&nbsp;<a href='/signIn'>회원가입</a>";
+		}
+		else {
+			str = "<lable>"+data+"</lable>&nbsp;&nbsp;<label id=lblSignOut>로그아웃</label><br><br>"
+		}
+		$('#dvHead').html(str);
+		if(data!='') {
+			$('body').append('<input type=button id=btnWrite value="글작성">');
+		}
+	}, 'text');
+})
+.on('click', '#lblSignOut', function(){
+	$.post('/signOut', {}, function(data){
+		if(data=='ok') {
+			document.location ="/";
+		}
+		else {
+			alert("로그아웃 실패.. 다시 시도하십시오.");
+		}
+	}, 'text');
+})
+</script>
+</html>

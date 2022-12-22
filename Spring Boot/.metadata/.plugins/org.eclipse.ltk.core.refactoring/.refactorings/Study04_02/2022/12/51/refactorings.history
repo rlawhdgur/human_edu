@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;mtbatis&apos; to &apos;mybatis.mapper&apos;&#x0D;&#x0A;- Original project: &apos;Study04_02&apos;&#x0D;&#x0A;- Original element: &apos;Study04_02/src/main/resources/mtbatis&apos;&#x0D;&#x0A;- Renamed element: &apos;Study04_02/src/main/resources/mybatis.mapper&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;mtbatis&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src\/main\/resources=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;mtbatis" name="mybatis.mapper" qualified="false" references="true" stamp="1670903730828" textual="false" version="1.0"/>
+</session>

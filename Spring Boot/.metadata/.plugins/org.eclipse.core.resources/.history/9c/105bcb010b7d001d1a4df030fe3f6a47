@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				 "http://mybatis.org/dtd//mybatis-3-mapper.dtd">
+
+<mapper namespace="com.human.springboot.PostDAO">
+
+<insert id="addWrite">
+	insert into posting values(seq_post_id.nextval, #{param1}, #{param2}, #{param3},
+	to_char(sysdate, 'YYYYMMDDHH24MISS'), to_char(sysdate, 'YYYYMMDDHH24MISS'))
+</insert>
+
+<select id="listWrite" resultType="com.human.springboot.WriteDTO">
+	select post_id, title, writer,
+		  substr(created,1,4)||'-'||substr(created,5,2)||'-'||substr(created,7,2)||' '||substr(created,9,2)||':'||substr(created,11,2)||':'||substr(created,13,2) created, 
+		  substr(created,1,4)||'-'||substr(created,5,2)||'-'||substr(created,7,2)||' '||substr(created,9,2)||':'||substr(created,11,2)||':'||substr(created,13,2) updated 
+	from posting
+	order by post_id desc
+</select>
+
+<select id="getWrite" resultType="com.human.springboot.PostingDTO">
+	select post_id, title, content, writer, 
+		   substr(created,1,4)||'-'||substr(created,5,2)||'-'||substr(created,7,2)||' '||substr(created,9,2)||':'||substr(created,11,2)||':'||substr(created,13,2) created, 
+		   substr(created,1,4)||'-'||substr(created,5,2)||'-'||substr(created,7,2)||' '||substr(created,9,2)||':'||substr(created,11,2)||':'||substr(created,13,2) updated 
+	from posting
+	where post_id=#{param1}
+</select>
+
+<delete id="getDelete">
+	delete from posting where post_id=#{param1}
+</delete>
+
+<update id="getUpdate">
+	update posting set title=#{param1}, content=#{param2}, 
+						updated=to_char(sysdate, 'YYYYMMDDHH24MISS') 
+	where post_id=#{param1}
+</update>
+
+</mapper>

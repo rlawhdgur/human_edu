@@ -1,0 +1,12 @@
+package com.human.springboot;
+
+public interface PostingDTO {
+	
+	private int post_id;
+	private String title;
+	private Stirng content;
+	private String writer;
+	private String created;
+	private String updated;
+
+}

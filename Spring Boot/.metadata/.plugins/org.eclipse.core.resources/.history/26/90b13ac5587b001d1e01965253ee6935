@@ -1,0 +1,120 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AJAX Room Information</title>
+</head>
+<body>
+<h1>AJAX Room Information</h1>
+<table>
+<tr>
+	<td>
+		<table border=1 id=tblRoomInfo>
+		<tr>
+			<th>Num</th>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Howmany</th>
+			<th>Howmuch</th>
+		</tr>	
+		</table>	
+	</td>
+	<td>
+		<input type=hidden name=optype id=optype value='insert'>
+		<table border=1>
+			<tr>
+				<td>Num</td><td><input type=text name=roomNum id=roomNum readonly></td>
+			</tr>
+			<tr>
+				<td>Name</td><td><input type=text name=roomName id=roomName></td>
+			</tr>
+			<tr>
+				<td>Type</td><td><input type=text name=type id=type></td>
+			</tr>
+			<tr>
+				<td>Howmany</td>
+				<td>
+					<input type=number name=roomHowmany id=roomHowmany value="1" min="1" max="99">
+				</td>
+			</tr>
+			<tr>
+				<td>Howmuch</td>
+				<td>
+					<input type=text name=roomHowmuch id=roomHowmuch value="0">
+				</td>
+			</tr>
+			<tr>
+				<td colspan=2 align=center>
+					<input type=button value='추가' id=btnAddNew>
+					<input type=button value='삭제' id=btnDelete>
+					<input type=button value='비우기' id=btnReset>
+				</td>
+			</tr>
+		</table>
+	</td>	
+</tr>
+</table>
+</body>
+<script src='https://code.jquery.com/jquery-3.4.1.js'></script>
+<script>
+$(document)
+.ready(function(){
+	loadRoomInfo();
+})
+.on('click','#tblRoomInfo tr', function(){
+	$('#roomNum').val($(this).find('td:eq(0)').text());
+	$('#roomName').val($(this).find('td:eq(1)').text());
+	$('#type').val($(this).find('td:eq(2)').text());
+	$('#roomHowmany').val($(this).find('td:eq(3)').text());
+	$('#roomHowmuch').val($(this).find('td:eq(4)').text());
+	$('#optype').val('update');
+	
+	return false;
+})
+.on('click', '#btnReset', function(){
+	$('#roomNum, #roomName, #type, #roomHowmany, #roomHowmuch').val('');
+	$('#optype').val('insert');
+	
+	return false;
+})
+.on('click','#btnDelete',function(){
+	if($('#roomNum').val()=='')
+			return false;
+	
+	$.get("/cudRoomInfo", {optype:'delete', roomNum:$('#roomNum').val()}, function(data){
+			loadRoomInfo();
+			$('#btnReset').trigger('click');
+	}, 'text');
+	
+	return false;
+})
+.on('click', '#btnAddNew', function(){
+	if($('#roomName').val()=='')
+		return false;
+	
+	$.get("/cudRoomInfo", 
+			{optype:$('optype').val(), num:$('#roomNum').val(), name:$('#roomName').val()
+			, type:$('#type').val(), howmany:$('#roomHowmany').val(), howmuch:$('#roomHowmuch').val()}, 
+		function(data){
+			loadRoomType();
+			$('#btnReset').trigger('click');
+	}, 'text');
+	
+	return false;
+})
+function loadRoomInfo(){
+	$('#tblRoomInfo tr:gt(0)').remove();
+	$.get('/getRoomInfo', {}, function(data){
+		for(i=0; i<data.length; i++) {
+			let ritype = data[i];
+			let str = '<tr><td>' + ritype['roomNum'] + '</td><td>' + ritype['roomName'] + '</td><td>'
+					+ ritype['type'] + '</td><td>' + ritype['roomHowmany'] + '</td><td>' +
+						ritype['roomHowmuch'] + '</td</tr>';
+			$('#tblRoomInfo').append(str);
+		}
+	}, 'json');
+}
+</script>
+</html>
