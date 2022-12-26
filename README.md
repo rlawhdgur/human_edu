@@ -41,5 +41,5 @@
     - 참고 서적 : 처음 시작하는 R데이터 분석
 
 - Python
-    - 사용툴 : <img src="https://img.shields.io/badge/Python-3776AB?style=flat-badge&logo=Python&logoColor=white">
+    - 사용툴 : <img src="https://img.shields.io/badge/Python-3776AB?style=flat-badge&logo=Python&logoColor=white">, <img src="https://img.shields.io/badge/Google%20Colab-F9AB00?style=flat-badge&logo=Google%20Colab&logoColor=white">, <img src="https://img.shields.io/badge/Jupyter-F37626?style=flat-badge&logo=Jupyter&logoColor=white">, <img src="https://img.shields.io/badge/PyCharm-000000?style=flat-badge&logo=PyCharm&logoColor=white">PyCharm
     
